@@ -1,0 +1,61 @@
+﻿@model IEnumerable<HairCut.Models.Slider>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+ <div class="main_content_iner ">
+            <div class="container-fluid p-0">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="white_card card_height_100 mb_30">
+                            <div class="white_card_header">
+                                <div class="box_header m-0">
+                                    <div class="main-title">
+                                        <a href="/Slider/Create" class="btn btn-success btn-sm">Add New Slider</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="white_card_body">
+                                <div class="QA_section">
+                                    <div class="QA_table mb_30">
+
+                                        <table class="table lms_table_active3 ">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Heading</th>
+                                                    <th scope="col">Phone</th>
+                                                    <th scope="col">Image</th>
+                                                    <th scope="col">Address</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{int i = 1;}
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <th scope="row"> @i </th>
+                                                        <td>@item.Heading</td>
+                                                        <td>@item.Phone</td>
+                                                        <td><img src="@Url.Content(item.ImgPath)" style="width: 80px; height:50px;" /> </td>
+                                                        <td>@item.Address</td>
+                                                        <td>
+                                                            @Html.ActionLink("Edit", "Edit", "Slider", new { id = item.SliderId }, new { @class = "btn btn-primary btn-sm" }) |
+                                                            @Html.ActionLink("Delete", "Delete", "Slider", new { id = item.SliderId }, new { @class = "btn btn-danger btn-sm" })
+                                                        </td>
+                                                    </tr>
+                                                    i++;
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
